@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  
+  .print-content,
+  .print-content * {
+    visibility: visible;
+  }
+  
+  .print-content {
+    position: absolute;
+    left: 50%;
+    top: 2rem;
+    transform: translateX(-50%);
+    width: 80mm; /* Standard receipt width */
+    padding: 1rem;
+    border: none !important;
+  }
+
+  /* Hide non-printable elements */
+  .no-print {
+    display: none !important;
+  }
+
+  /* Enhance typography for printing */
+  .print-content {
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+
+  /* Ensure black text for better printing */
+  .print-content * {
+    color: black !important;
+    border-color: black !important;
+  }
+
+  /* Add page break rules */
+  .print-content {
+    page-break-inside: avoid;
+    page-break-after: always;
+  }
+}
